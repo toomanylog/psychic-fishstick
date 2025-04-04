@@ -1,0 +1,44 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid || auth.token.admin === true",
+        ".write": "$uid === auth.uid || auth.token.admin === true",
+        ".validate": "newData.hasChildren(['createdAt'])"
+      }
+    },
+    "emails": {
+      "$uid": {
+        ".read": "$uid === auth.uid || auth.token.admin === true",
+        ".write": "$uid === auth.uid || auth.token.admin === true"
+      }
+    },
+    "addresses": {
+      "$uid": {
+        ".read": "$uid === auth.uid || auth.token.admin === true",
+        ".write": "$uid === auth.uid || auth.token.admin === true"
+      }
+    },
+    "payments": {
+      "$uid": {
+        ".read": "$uid === auth.uid || auth.token.admin === true",
+        ".write": "$uid === auth.uid || auth.token.admin === true"
+      },
+      "webhooks": {
+        ".read": "auth.token.admin === true",
+        ".write": "auth.token.admin === true || auth.uid != null"
+      }
+    },
+    "system": {
+      ".read": "auth.token.admin === true",
+      ".write": "auth.token.admin === true"
+    },
+    ".info": {
+      "connected": {
+        ".read": true
+      }
+    },
+    ".read": false,
+    ".write": false
+  }
+} 
